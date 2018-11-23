@@ -13,7 +13,6 @@ public class PropertiesUtil {
     static {
 
         try {
-            System.out.println("123123");
             properties=new Properties();
             properties.load(Files.newBufferedReader(Paths.get("resources", "application.properties")));
 

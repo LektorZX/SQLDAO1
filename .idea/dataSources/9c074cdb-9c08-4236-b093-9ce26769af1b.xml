@@ -73,8 +73,8 @@
     <schema id="16" parent="3" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2018-11-23.13:29:38.776</IntrospectionTimestamp>
-      <IntrospectionStateNumber>2635</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-11-23.16:41:55.291</IntrospectionTimestamp>
+      <IntrospectionStateNumber>2643</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -121,8 +121,8 @@
       <Type>index</Type>
     </access-method>
     <sequence id="23" parent="16" name="review_id_seq">
-      <ObjectId>16624</ObjectId>
-      <StateNumber>2635</StateNumber>
+      <ObjectId>16672</ObjectId>
+      <StateNumber>2643</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
@@ -138,11 +138,11 @@
     </sequence>
     <table id="25" parent="16" name="restaraunt">
       <ObjectId>16616</ObjectId>
-      <StateNumber>2635</StateNumber>
+      <StateNumber>2643</StateNumber>
     </table>
     <table id="26" parent="16" name="review">
-      <ObjectId>16626</ObjectId>
-      <StateNumber>2635</StateNumber>
+      <ObjectId>16674</ObjectId>
+      <StateNumber>2643</StateNumber>
     </table>
     <column id="27" parent="25" name="id">
       <Position>1</Position>
@@ -185,36 +185,37 @@
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2635</StateNumber>
+      <StateNumber>2643</StateNumber>
       <DefaultExpression>nextval(&apos;review_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
       <SequenceName>review_id_seq</SequenceName>
     </column>
     <column id="34" parent="26" name="text">
       <Position>2</Position>
-      <DataType>varchar|0s</DataType>
-      <StateNumber>2635</StateNumber>
+      <DataType>varchar(512)|0s</DataType>
+      <StateNumber>2643</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="35" parent="26" name="restaraunt_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>2635</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>2643</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="36" parent="26" name="review_pkey">
-      <ObjectId>16633</ObjectId>
+      <ObjectId>16681</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="37" parent="26" name="review_pkey">
-      <ObjectId>16634</ObjectId>
+      <ObjectId>16682</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>review_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="38" parent="26" name="review_restaraunt_id_fkey">
-      <ObjectId>16635</ObjectId>
+      <ObjectId>16683</ObjectId>
       <ColNames>restaraunt_id</ColNames>
       <RefTableId>16616</RefTableId>
       <RefColPositions>1</RefColPositions>
