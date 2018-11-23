@@ -10,7 +10,7 @@ public class Dao_RestTest {
     @Test
     public void cheskDao_restSave(){
         Restaraunt builder = Restaraunt.builder()
-                .name("test")
+                .name("test12")
                 .build();
         dao.save(builder);
         assertNotNull("проверка ",builder.getId());//проверка если айди = нал то что то не так

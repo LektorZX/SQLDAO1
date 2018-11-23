@@ -73,8 +73,8 @@
     <schema id="16" parent="3" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2018-11-21.20:17:29.093</IntrospectionTimestamp>
-      <IntrospectionStateNumber>2628</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-11-23.13:29:38.776</IntrospectionTimestamp>
+      <IntrospectionStateNumber>2635</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -120,7 +120,15 @@
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
-    <sequence id="23" parent="16" name="restaraunt_id_seq">
+    <sequence id="23" parent="16" name="review_id_seq">
+      <ObjectId>16624</ObjectId>
+      <StateNumber>2635</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="24" parent="16" name="restaraunt_id_seq">
       <ObjectId>16614</ObjectId>
       <StateNumber>2628</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
@@ -128,11 +136,15 @@
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <table id="24" parent="16" name="restaraunt">
+    <table id="25" parent="16" name="restaraunt">
       <ObjectId>16616</ObjectId>
-      <StateNumber>2628</StateNumber>
+      <StateNumber>2635</StateNumber>
     </table>
-    <column id="25" parent="24" name="id">
+    <table id="26" parent="16" name="review">
+      <ObjectId>16626</ObjectId>
+      <StateNumber>2635</StateNumber>
+    </table>
+    <column id="27" parent="25" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -141,33 +153,74 @@
       <TypeId>23</TypeId>
       <SequenceName>restaraunt_id_seq</SequenceName>
     </column>
-    <column id="26" parent="24" name="name">
+    <column id="28" parent="25" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>2628</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="27" parent="24" name="restaraunt_pkey">
+    <index id="29" parent="25" name="restaraunt_pkey">
       <ObjectId>16620</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="28" parent="24" name="restaraunt_name_key">
+    <index id="30" parent="25" name="restaraunt_name_key">
       <ObjectId>16622</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="29" parent="24" name="restaraunt_pkey">
+    <key id="31" parent="25" name="restaraunt_pkey">
       <ObjectId>16621</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>restaraunt_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="30" parent="24" name="restaraunt_name_key">
+    <key id="32" parent="25" name="restaraunt_name_key">
       <ObjectId>16623</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>restaraunt_name_key</UnderlyingIndexName>
     </key>
+    <column id="33" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2635</StateNumber>
+      <DefaultExpression>nextval(&apos;review_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>20</TypeId>
+      <SequenceName>review_id_seq</SequenceName>
+    </column>
+    <column id="34" parent="26" name="text">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>2635</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="35" parent="26" name="restaraunt_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>2635</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="36" parent="26" name="review_pkey">
+      <ObjectId>16633</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="37" parent="26" name="review_pkey">
+      <ObjectId>16634</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>review_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="26" name="review_restaraunt_id_fkey">
+      <ObjectId>16635</ObjectId>
+      <ColNames>restaraunt_id</ColNames>
+      <RefTableId>16616</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>restaraunt</RefTableName>
+      <RefKeyName>restaraunt_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
