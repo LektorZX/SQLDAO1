@@ -3,6 +3,7 @@ package util;
 import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -14,7 +15,9 @@ public class PropertiesUtil {
 
         try {
             properties=new Properties();
-            properties.load(Files.newBufferedReader(Paths.get("resources", "application.properties")));
+            InputStream resourceAsStream = PropertiesUtil.class.getClassLoader().getResourceAsStream("application.properties");
+
+             properties.load(resourceAsStream);
 
         } catch (IOException e) {
             e.printStackTrace();

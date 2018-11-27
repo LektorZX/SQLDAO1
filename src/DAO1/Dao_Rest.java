@@ -7,15 +7,43 @@ import lombok.NoArgsConstructor;
 import util.ConnectionManager;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Dao_Rest {
 
     private static final Dao_Rest INSTANSE = new Dao_Rest();
     private static final String SAVE = "INSERT INTO restaraunt(name) VALUES (?);";
+    private static final String GET_ALL="SELECT id,name FROM restaraunt ";
 
     public static Dao_Rest getInstanse() {
         return INSTANSE;
+    }
+
+    public List<Restaraunt> getAll(){
+        List<Restaraunt> rest=new ArrayList<>();
+
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL);) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                rest.add(new Restaraunt().builder()
+                .id(resultSet.getInt(1))
+                .name(resultSet.getString("name"))
+                .build());
+            }
+
+
+        } catch (SQLException e) {
+            new DAOExeption(e);
+        }
+        for (Restaraunt restaraunt : rest) {
+            System.out.println(restaraunt);
+        }
+        return rest;
+
+
     }
 
     public Integer save(Restaraunt restaraunt) {

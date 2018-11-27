@@ -11,10 +11,19 @@ public class ConnectionManager {
     private static final String URL="db.url";
     private static final String USERNAME="db.username";
     private static final String PASSWORD="db.password";
+    static {
+        driver();
+    }
 public static Connection get() throws SQLException {
     return DriverManager.getConnection(PropertiesUtil.get(URL),PropertiesUtil.get(USERNAME),
             PropertiesUtil.get(PASSWORD));
 }
-
+    private static void driver() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

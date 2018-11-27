@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Web:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Web_war_exploded2</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Web/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Web" />
+          <element id="module-output" name="SQLDAO1" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="postgresql-42.2.1" />
+          <element id="library" level="project" name="lombok" />
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="junit-4.10 (1)" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
